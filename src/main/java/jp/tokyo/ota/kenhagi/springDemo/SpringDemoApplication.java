@@ -1,6 +1,6 @@
 package jp.tokyo.ota.kenhagi.springDemo;
 
-import jp.tokyo.ota.kenhagi.springDemo.Tasklet.Func;
+import jp.tokyo.ota.kenhagi.springDemo.Job.DemoJob;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -12,7 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SpringDemoApplication implements CommandLineRunner {
 
     @Autowired
-    private final Func func;
+    private final DemoJob demoJob;
 
     public static void main(String[] args) {
         SpringApplication.run(SpringDemoApplication.class, args).close();
@@ -20,6 +20,6 @@ public class SpringDemoApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        func.tasklet();
+        demoJob.doJob();
     }
 }
