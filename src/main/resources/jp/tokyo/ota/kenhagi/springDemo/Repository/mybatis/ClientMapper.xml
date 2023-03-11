@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jp.tokyo.ota.kenhagi.springDemo.Repository.mybatis.ClientMapper">
+    <resultMap id="Company" type="jp.tokyo.ota.kenhagi.springDemo.Domain.Company">
+        <id property="cid" column="cid"/>
+        <id property="name" column="name"/>
+        <id property="contractUntil" column="contract_until"/>
+        <id property="createdAt" column="created_at"/>
+        <id property="updatedAt" column="updated_at"/>
+    </resultMap>
+
+    <select id="findCompany" resultMap="Company">
+        SELECT
+        cid,
+        name,
+        contract_until,
+        created_at,
+        updated_at
+        FROM
+        company
+        <if test="name != null">
+            <where>
+                name = #{name}
+            </where>
+        </if>
+        ;
+    </select>
+
+
+    <resultMap id="User" type="jp.tokyo.ota.kenhagi.springDemo.Domain.User">
+        <id property="uid" column="uid"/>
+        <id property="cid" column="cid"/>
+        <id property="name" column="name"/>
+        <id property="createdAt" column="created_at"/>
+        <id property="updatedAt" column="updated_at"/>
+    </resultMap>
+    <select id="findUser" resultMap="User">
+        SELECT
+        uid,
+        cid,
+        name,
+        created_at,
+        updated_at
+        FROM
+        user
+        <if test="name != null">
+            <where>
+                name = #{name}
+            </where>
+        </if>
+        <if test="cid != null">
+            <where>
+                cid = #{cid}
+            </where>
+        </if>
+        ;
+    </select>
+
+</mapper>
