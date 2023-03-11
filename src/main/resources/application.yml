@@ -1,2 +1,10 @@
 settings:
-  bulbulTasklet: Job1
+  bulbulTasklet: Job2
+
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost/user
+    username: all
+    password: ${DB_PASSWORD}
+
